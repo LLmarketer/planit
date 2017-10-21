@@ -88,6 +88,7 @@ router.post('/:id/delete', (req, res, next) => {
 });
 //ends campaign delete action
 
+//start campaign data fetch by month
 router.get('/:year/:month',(req,res,next)=>{
   var searchParams = {};
   var di = moment('2017-10-01', "YYYY-MM-DD").toArray();
