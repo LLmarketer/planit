@@ -1,0 +1,34 @@
+<div class="container">
+  <div class="row">
+    <div class="col-sm-6 centered-form">
+      <form action="/products/" method="post" enctype="multipart/form-data">
+        <div class="form-group">
+          <label for="name">Product Name</label>
+          <input type="text" name="name" class="form-control">
+        </div>
+        <div class="form-group">
+          <label for="picture">Picture</label>
+    <input type="file" name="picture">
+
+        </div>
+        <div class="form-group">
+          <label for="sku">SKU</label>
+          <input type="sku" name="sku" class="form-control">
+        </div>
+        <div class="form-group">
+          <label for="price">Price</label><br>
+         <input type="price" name="price" class="form-control">
+        </div>
+        <div class="form-group">
+          <label for="cat">Category</label><br>
+          <select name="cat" id="cat">
+            <% types.forEach((cat) => { %>
+              <option type="text" value="<%= cat %>" class="form-control"><%= cat %></option>
+            <%  }) %>
+          </select>
+	<div class="form-group">
+          <button type="submit">Create New Product </button>
+        </div>
+      </form>
+    </div>
+  </div>
