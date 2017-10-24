@@ -2,6 +2,7 @@
 const mongoose = require('mongoose');
 const Schema   = mongoose.Schema;
 const TYPES    = require('./campaign-types');
+const Product  = require('../models/product');
 //const CATS     = require('./campaign-pro-types');
 const moment = require ('moment');
 
@@ -13,8 +14,8 @@ const CampaignSchema = new Schema({
   goal          : { type: Number, required: true },
   startdate      : { type: Date, required: true },
   enddate      : { type: Date, required: true },
-  products      :{ type: String, required: false },
-  //products      :  [{type: Schema.Types.ObjectId, ref: 'Product', required: false }],
+  //products      :{ type: String, required: false },
+  products      :  [{type: Schema.Types.ObjectId, ref: 'Product', required: false }],
   percentage    : { type: String, required:false}
 });
 

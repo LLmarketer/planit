@@ -9,7 +9,7 @@ picture : {type: String, required: true},
 sku : {type: String, required: true},
 cat: { type: String, enum: PROTYPES, required: true },
 price: { type: Number, required: true },
-})
+});
 
 
 module.exports = mongoose.model('Product', ProductSchema);

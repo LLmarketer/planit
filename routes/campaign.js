@@ -1,6 +1,7 @@
 const express  = require('express');
 const Campaign = require('../models/campaign');
 const TYPES    = require('../models/campaign-types');
+const Product  = require ('../models/product');
 const router   = express.Router();
 const { ensureLoggedIn }  = require('connect-ensure-login');
 const moment = require('moment');
@@ -28,14 +29,24 @@ router.post('/', ensureLoggedIn('/login'), (req, res, next) => {
     _creator: req.user._id
   });
 
-  newCampaign.save( (err) => {
-  if (err) {
-    console.log('ERROR!!!!!!!!', err);
-    res.render('campaigns/new', { campaign: newCampaign, types: TYPES });
-  } else {
-    res.redirect(`/campaigns/${newCampaign._id}`);
-  }
-});
+  // Product.findById(req.params.id, (err, product)=>{
+    // if (err)       { return next(err) }
+    // else{
+      newCampaign.save( (err) => {
+      if (err) {
+        console.log('################ERROR###################', err);
+
+        res.render('campaigns/new', { campaign: newCampaign, types: TYPES });
+      } else {
+
+
+        res.redirect(`/campaigns/${newCampaign._id}`);
+      }
+    });
+    // }
+
+  // });
+
 });
 //end form post
 
@@ -67,7 +78,8 @@ router.post('/:id', ensureLoggedIn('/login'), (req, res, next) => {
       goal: req.body.goal,
       description: req.body.description,
       category: req.body.category,
-      deadline: req.body.deadline
+      deadline: req.body.deadline,
+      products: req.body.products
     },
     (err, campaign) => {
     if (err) { return next(err); }
@@ -101,7 +113,7 @@ router.get('/:year/:month',(req,res,next)=>{
        console.log('result')
        res.render('campaigns/summary', { campaign });
        if (err)return console.log('err',err);
-       console.log('campaign',campaign)
+
      });
 });
 
