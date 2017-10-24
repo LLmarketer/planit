@@ -1,51 +1,56 @@
-<!DOCTYPE html>
-
-<br>
-<br>
-<div class="container">
-  <div class="row">
-    <div class="col-sm-6 centered-form">
-      <form action="/campaigns" method="post">
-        <div class="form-group">
-          <label for="title">Title</label>
-          <input type="text" name="title" class="form-control">
-        </div>
-        <div class="form-group">
-          <label for="goal">Goal</label>
-          <input type="number" name="goal" class="form-control">
-        </div>
-        <div class="form-group">
-          <label for="description">Description</label>
-          <textarea id="description" name="description" class="form-control"></textarea>
-        </div>
-        <div class="form-group">
-          <label for="category">Category</label><br>
-          <select name="category" id="category">
-            <% types.forEach((category) => { %>
-              <option type="text" value="<%= category %>" class="form-control"><%= category %></option>
-            <%  }) %>
-          </select>
-        </div>
-        <div class="form-group">
-          <label for="startdate">Start Date</label>
-          <input type="date" name="startdate" class="form-control">
-        </div>
-        <div class="form-group">
-          <label for="enddate">End Date</label>
-          <input type="date" name="enddate" class="form-control">
-        </div>
+<header class="masthead">
+  <div class="container h-100">
+    <div class="row h-100">
+      <div class="col-lg-7 my-auto">
+        <div class="header-content mx-auto">
+          <div class="container">
+            <div class="row">
+              <div class="col-sm-6 centered-form">
 
 
-        <div class="form-group">
-          <label for="products">Products</label>
-          <input type="text" name="products" class="form-control">
-        </div>
-        <div class="form-group">
 
-              <button type="submit">Create Campaign</button>
-
+                            <form action="/campaigns" method="post">
+                              <div class="form-group">
+                                <label for="title">Title</label>
+                                <input type="text" name="title" class="form-control">
+                              </div>
+                              <div class="form-group">
+                                <label for="goal">Goal</label>
+                                <input type="number" name="goal" class="form-control">
+                              </div>
+                              <div class="form-group">
+                                <label for="description">Description</label>
+                                <textarea id="description" name="description" class="form-control"></textarea>
+                              </div>
+                              <div class="form-group">
+                                <label for="category">Category</label><br>
+                                <select name="category" id="category">
+                                  <% types.forEach((category) => { %>
+                                    <option type="text" value="<%= category %>" class="form-control"><%= category %></option>
+                                  <%  }) %>
+                                </select>
+                              </div>
+                              <div class="form-group">
+                                <label for="startdate">Start Date</label>
+                                <input type="date" name="startdate" class="form-control">
+                              </div>
+                              <div class="form-group">
+                                <label for="enddate">End Date</label>
+                                <input type="date" name="enddate" class="form-control">
+                              </div>
+                              <div class="form-group">
+                                <label for="products">Products</label>
+                                <input type="text" name="products" class="form-control">
+                              </div>
+                              <div class="form-group">
+                                    <button type="submit">Create Campaign</button>
+                              </div>
+                            </form>
+                </div>
+              </div>
+            </div>
         </div>
-      </form>
+      </div>
     </div>
   </div>
-</HTML>
+</header>
