@@ -9,12 +9,16 @@ const moment = require('moment');
 
 //this is the code the customer gets when when visinting /new
 router.get('/new', (req,res) => {
-res.render('campaigns/new', {types: TYPES});
+  Product.find({}, function(err, product){
+    res.render('campaigns/new', {types: TYPES, prodname: product} );
+  });
 });
+
 
 // we're checking the user is logged in
 //and posting the camapign info to the db
 router.post('/', ensureLoggedIn('/login'), (req, res, next) => {
+
   const newCampaign = new Campaign({
     title: req.body.title,
     goal: req.body.goal,
@@ -29,25 +33,17 @@ router.post('/', ensureLoggedIn('/login'), (req, res, next) => {
     _creator: req.user._id
   });
 
-  // Product.findById(req.params.id, (err, product)=>{
-    // if (err)       { return next(err) }
-    // else{
+
+
       newCampaign.save( (err) => {
       if (err) {
-        console.log('################ERROR###################', err);
-
         res.render('campaigns/new', { campaign: newCampaign, types: TYPES });
       } else {
-
-
         res.redirect(`/campaigns/${newCampaign._id}`);
       }
     });
-    // }
+    });
 
-  // });
-
-});
 //end form post
 
 //gets the campaign + id
