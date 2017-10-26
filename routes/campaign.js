@@ -18,7 +18,7 @@ router.get('/new', (req,res) => {
 // we're checking the user is logged in
 //and posting the camapign info to the db
 router.post('/', ensureLoggedIn('/login'), (req, res, next) => {
-
+console.log('eetstes', req.body.product);
   const newCampaign = new Campaign({
     title: req.body.title,
     goal: req.body.goal,
@@ -26,13 +26,12 @@ router.post('/', ensureLoggedIn('/login'), (req, res, next) => {
     category: req.body.category,
     startdate: req.body.startdate,
     enddate: req.body.enddate,
-    products: req.body.products,
+    products: req.body.product,
     percentage: req.body.percentage,
     // We're assuming a user is logged in here
     // If they aren't, this will throw an error
     _creator: req.user._id
   });
-
 
 
       newCampaign.save( (err) => {
@@ -48,12 +47,17 @@ router.post('/', ensureLoggedIn('/login'), (req, res, next) => {
 
 //gets the campaign + id
 router.get('/:id', (req,res) => {
-Campaign.findById(req.params.id, (err, campaign) => {
-  if (err)       { return next(err) }
-  if (!campaign) { return next(new Error("404")) }
-return res.render('campaigns/show', {campaign});
-    });
+  Campaign.findById(req.params.id, (err, campaign) => {
 
+    if (err)       { return next(err) }
+    if (!campaign) { return next(new Error("404")) }
+
+    // Campaign.populate('products', (err, campaign) => {
+    // if (err){ return next(err); }
+
+    return res.render('campaigns/show', { campaign });
+  });
+//  });
 });
 
 //start edit action

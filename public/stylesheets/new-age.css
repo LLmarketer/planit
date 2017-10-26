@@ -9,7 +9,8 @@ body {
   height: 100%; }
 
 body {
-  font-family: 'Muli', 'Helvetica', 'Arial', 'sans-serif'; }
+  font-family: 'Muli', 'Helvetica', 'Arial', 'sans-serif';
+}
 
 a {
   color: #fdcc52;
@@ -115,6 +116,7 @@ section {
 header.masthead {
   position: relative;
   width: 100%;
+  height: 100%;
   padding-top: 150px;
   padding-bottom: 100px;
   color: white;
@@ -136,7 +138,7 @@ header.masthead {
   @media (min-width: 992px) {
     header.masthead {
       height: 100vh;
-      min-height: 775px;
+      min-height: 1000px;
       padding-top: 0;
       padding-bottom: 0; }
       header.masthead .header-content {
