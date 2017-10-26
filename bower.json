@@ -6,7 +6,7 @@
     "Lydia Lavecchia <lydia.lavecchia@gmail.com>"
   ],
   "license": "MIT",
-  "homepage": "",
+  "homepage": "https://github.com/LLmarketer/planit",
   "ignore": [
     "**/.*",
     "node_modules",
@@ -17,6 +17,6 @@
   "dependencies": {
     "jquery": "^3.2.1",
     "bootstrap": "^3.3.7",
-"select2": "~4.0"
+    "select2": "~4.0"
   }
 }
