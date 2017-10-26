@@ -15,8 +15,10 @@ const Campaign           = require('./models/campaign');
 const Product            = require('./models/product');
 const bcrypt             = require('bcrypt');
 const FbStrategy = require('passport-facebook').Strategy;
+require('dotenv').config();
 
-mongoose.connect('mongodb://localhost:27017/planit');
+
+mongoose.connect(process.env.MONGODB_URI);
 
 
 const app = express();
@@ -124,8 +126,8 @@ app.use( (req, res, next) => {
 
 //fb passport login starts
 passport.use(new FbStrategy({
-  clientID: "178617576036318",
-  clientSecret: "d3b44a369bf90e1e3644c30f328bf87c",
+  clientID:process.env.FB_APP_ID,
+  clientSecret:process.env.FB_APP_SECRET,
   callbackURL: "/auth/facebook/callback"
 }, (accessToken, refreshToken, profile, done) => {
   User.findOne({ facebookID: profile.id }, (err, user) => {
