@@ -10,7 +10,7 @@ const moment = require('moment');
 //this is the code the customer gets when when visinting /new
 router.get('/new', (req,res) => {
   Product.find({}, function(err, product){
-    res.render('campaigns/new', {types: TYPES, prodname: product} );
+    res.render('campaigns/new', {types: TYPES, products: product} );
   });
 });
 
@@ -60,15 +60,24 @@ router.get('/:id', (req,res) => {
 //  });
 });
 
+
+
+
+
 //start edit action
 //get to the user the edit page
+
+
 router.get('/:id/edit', ensureLoggedIn('/login'), (req, res, next) => {
   Campaign.findById(req.params.id, (err, campaign) => {
     if (err)       { return next(err) }
     if (!campaign) { return next(new Error("404")) }
-    return res.render('campaigns/edit', { campaign, types: TYPES })
+    Product.find({}, function(err, product){
+        return res.render('campaigns/edit', { campaign, types: TYPES, products: product });
+      });
     });
   });
+
 //post the edit
 router.post('/:id', ensureLoggedIn('/login'), (req, res, next) => {
   Campaign.findByIdAndUpdate(
