@@ -40,8 +40,11 @@
           Menu
           <i class="fa fa-bars"></i>
         </button>
+
+
         <div class="collapse navbar-collapse" id="navbarResponsive">
           <ul class="navbar-nav ml-auto">
+            <% if (userSignedIn === true){ %>
             <li class="nav-item">
               <a class="nav-link js-scroll-trigger" href="/campaigns/new">Create Campaign</a>
             </li>
@@ -49,13 +52,16 @@
               <a class="nav-link js-scroll-trigger" href="/products/new">Add New Product</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link js-scroll-trigger" href="/login">Login</a>
-            </li>
-            <li class="nav-item">
               <form action="/logout" method="POST">
-              <button type="submit">Logout</button>
+                <button  class="nav-link js-scroll-trigger button-class logout" type="submit"><span class="logout js-scroll-trigger">Logout</span></button>
               </form>
             </li>
+            <% } else { %>
+            <li class="nav-item">
+              <a class="nav-link js-scroll-trigger" href="/login">Login</a>
+            </li>
+            <% } %>
+
 
           </ul>
         </div>

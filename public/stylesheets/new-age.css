@@ -39,6 +39,12 @@ h6 {
   font-weight: 200;
   letter-spacing: 1px; }
 
+h1.campaign-name {
+  font-family: 'Catamaran', 'Helvetica', 'Arial', 'sans-serif';
+  font-weight: 400;
+  letter-spacing: 1px;
+}
+
 p {
   font-size: 18px;
   line-height: 1.5;
@@ -310,5 +316,27 @@ footer {
   padding: 15px 45px; }
 
 .createdby{
+  color: black;
+}
+.button-class{
+  background: none;
+  color: inherit;
+  border: none;
+  padding: 0;
+  font: inherit !important;
+  padding: .3rem 1rem;
+
+}
+
+.logout{
+  font-family: 'Lato', 'Helvetica', 'Arial', 'sans-serif';
+  font-size:12px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color:#fdcc52;
+  opacity:.9
+}
+
+.logout :hover{
   color: black;
 }
