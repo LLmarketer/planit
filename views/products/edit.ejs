@@ -1,61 +1,76 @@
-<div class="container">
-  <div class="row">
-    <div class="col-sm-6 centered-form">
-      <form enctype="multipart/form-data" action="/products/<%= product._id %>" method="post">
+<header class="masthead">
+  <div class="container h-100">
+    <div class="row h-100">
+      <div class="col-lg-7 my-auto">
+        <div class="header-content mx-auto">
+          <div class="container">
 
-        <!-- name input -->
-        <div class="form-group">
-          <label for="name">Name</label>
-          <input type="text" name="name" class="form-control" value="<%= product.name %>">
+
+              <div class="row">
+                <div class="col-sm-6 centered-form">
+                  <form enctype="multipart/form-data" action="/products/<%= product._id %>" method="post">
+
+                    <!-- name input -->
+                    <div class="form-group">
+                      <label for="name">Name</label>
+                      <input type="text" name="name" class="form-control" value="<%= product.name %>">
+                    </div>
+
+
+                    <!-- category input -->
+                    <div class="form-group">
+                      <label for="cat">Cat</label><br>
+
+                        <select name="cat" id="cat">
+                          <% types.forEach((cat) => { %>
+                            <option type="text" value="<%= cat %>" class="form-control"><%= cat %></option>
+                          <%  }) %>
+                        </select>
+
+                    </div>
+
+                    <!-- sku input -->
+                    <div class="form-group">
+                      <label for="sku">Sku</label>
+                      <input type="text" name="sku" class="form-control" value="<%= product.sku %>">
+                    </div>
+
+                    <!-- price input  -->
+                    <div class="form-group">
+                      <label for="price">Price</label><br>
+                     <input type="number" step="0.01" name="price" value="<%= product.price %>" class="form-control">
+                    </div>
+
+                    <!-- picture edit - reupload-->
+
+                    <div class="form-group">
+                      <label for="picture">Picture</label>
+                      <img id="picture" src= "<%= product.picture %>" height="200" width="200">
+                      <br>
+                      <br>
+                      <input type="file" name="picture">
+                    </div>
+
+
+                    <div class="form-group">
+                      <button type="submit">Update Product</button>
+                    </div>
+                  </form>
+            <% if (typeof(errors) !== 'undefined'){ %>
+              <div class="alert alert-danger">
+              <ul>
+                <% for (let error in errors){ %>
+                  <li><%= errors[error].message %></li>
+                <% } %>
+              </ul>
+              </div>
+            <% } %>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
-
-
-        <!-- category input -->
-        <div class="form-group">
-          <label for="cat">Cat</label><br>
-
-            <select name="cat" id="cat">
-              <% types.forEach((cat) => { %>
-                <option type="text" value="<%= cat %>" class="form-control"><%= cat %></option>
-              <%  }) %>
-            </select>
-
-        </div>
-
-        <!-- sku input -->
-        <div class="form-group">
-          <label for="sku">Sku</label>
-          <input type="text" name="sku" class="form-control" value="<%= product.sku %>">
-        </div>
-
-        <!-- price input  -->
-        <div class="form-group">
-          <label for="price">Price</label><br>
-         <input type="number" step="0.01" name="price" value="<%= product.price %>" class="form-control">
-        </div>
-
-        <!-- picture edit - reupload -->
-
-        <div class="form-group">
-          <label for="picture">Picture</label>
-          <img id="picture" src= "/uploads/<%= product.picture %>">
-          <input type="file" name="picture">
-        </div>
-
-
-        <div class="form-group">
-          <button type="submit">Update Product</button>
-        </div>
-      </form>
-<% if (typeof(errors) !== 'undefined'){ %>
-  <div class="alert alert-danger">
-  <ul>
-    <% for (let error in errors){ %>
-      <li><%= errors[error].message %></li>
-    <% } %>
-  </ul>
-  </div>
-<% } %>
+      </div>
     </div>
   </div>
-</div>
+</header>
