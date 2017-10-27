@@ -44,7 +44,7 @@
                               <div class="form-group">
                                 <label for="products">Products</label>
                                 <select multiple name="product" id="product">
-                                  <% prodname.forEach((product) => { %>
+                                  <% products.forEach((product) => { %>
                                     <option type="text" value="<%= product.id %>" class="form-control"><%= product.name %></option>
                                   <%  }) %>
                                 </select>

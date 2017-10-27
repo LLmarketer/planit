@@ -1,28 +1,39 @@
-<div class="container campaign-container">
-  <div class="row">
-    <div class="col-sm-2">
-      <img src=""><br>
-    </div>
-    <div class="col-sm-10">
-      <h1><%= product.name %></h1>
-      <h2 class="product-category"><%= product.cat %></h2>
-      <h2 class="product-price"><%= product.price %></h2>
-      <h2 class="product-sku"><%= product.sku %></h2>
+<header class="masthead">
+  <div class="container h-100">
+    <div class="row h-100">
+      <div class="col-lg-7 my-auto">
+        <div class="header-content mx-auto">
+          <div class="container">
+
+
+
+              <div class="container campaign-container">
+                <div class="row">
+                  <div class="col-sm-10">
+                    <h1><%= product.name %></h1>
+                    <h2 class="product-category"><%= product.cat %></h2>
+                    <h2 class="product-price">$ <%= product.price %></h2>
+                    <h2 class="product-sku">SKU: <%= product.sku %></h2>
+                    <br>
+                    <br>
+                    <img id="picture" src= "/uploads/<%= product.picture %>" height="200" width="200">
+                    <br>
+                    <br>
+                    <form action="/products/<%= product._id %>/delete" method="POST">
+                    <button type="submit">Delete Product</button>
+                    </form>
+                    <br>
+                    <br>
+                    <a href="/products/<%= product._id %>/edit">
+                    <button type="submit">Edit Product</button></a>
+                    </form>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
-  <div class="row">
-    <div class="col-sm-8">
-      <img class="product-image" src="<%= product.picture %>">
-    </div>
-    <div class="col-sm-4 campaign-info">
-      <form action="/products/<%= product._id %>/delete" method="POST">
-        <button type="submit">Delete Product</button>
-      </form>
-      <br>
-      <br>
-      <a href="/products/<%= product._id %>/edit">
-        <button type="submit">Edit Product</button></a>
-      </form>
-    </div>
-  </div>
-</div>
+</header>
