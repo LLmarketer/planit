@@ -1,38 +1,51 @@
-<br>
-<div class="container">
-  <div class="row">
-    <div class="col-sm-6 centered-form">
-      <form action="/signup" method="post">
-        <div class="form-group">
-          <label for="username">Username</label>
-          <input type="text" name="username" class="form-control">
-        </div>
-        <div class="form-group">
-          <label for="email">Email</label>
-          <input type="text" name="email" class="form-control">
-        </div>
+<header class="masthead">
+  <div class="container h-100">
+    <div class="row h-100">
+      <div class="col-lg-7 my-auto">
+        <div class="header-content mx-auto">
+          <div class="container">
 
-        <div class="form-group">
-          <label for="description">Description</label>
-         <!--  <textarea id="description" name="role" class="form-control"></textarea>-->
-<select name="role">
-<option value="vp">Vice President of Sales</option>
-  <option value="head">Head of eCommerce</option>
-  <option value="specialist">eCommerce Specialist</option>
-  <option value="coordinator">eCommerce Coordinator</option>
-  <option value="assistant">eCommerce Assistant</option>
-</select>
+          <div class="container">
+            <div class="row">
+              <div class="col-sm-6 centered-form">
+                <form action="/signup" method="post">
+                  <div class="form-group">
+                    <label for="username">Username</label>
+                    <input type="text" name="username" class="form-control">
+                  </div>
+                  <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="text" name="email" class="form-control">
+                  </div>
+
+                  <div class="form-group">
+                    <label for="description">Description</label>
+                   <!--  <textarea id="description" name="role" class="form-control"></textarea>-->
+          <select name="role">
+          <option value="vp">Vice President of Sales</option>
+            <option value="head">Head of eCommerce</option>
+            <option value="specialist">eCommerce Specialist</option>
+            <option value="coordinator">eCommerce Coordinator</option>
+            <option value="assistant">eCommerce Assistant</option>
+          </select>
+                  </div>
+
+
+                  <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" name="password" class="form-control">
+                  </div>
+
+                  <button type="submit">Signup</button>
+                  <a href="/auth/facebook">Login With Facebook</a>
+                </form>
+                </div>
+              </div>
+            </div>
+
+          </div>
         </div>
-
-
-        <div class="form-group">
-          <label for="password">Password</label>
-          <input type="password" name="password" class="form-control">
         </div>
-
-        <button type="submit">Signup</button>
-        <a href="/auth/facebook">Login With Facebook</a>
-      </form>
-    </div>
-  </div>
-</div>
+        </div>
+        </div>
+        </header>

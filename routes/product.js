@@ -7,6 +7,9 @@ const { ensureLoggedIn }  = require('connect-ensure-login');
 const moment = require('moment');
 const multer  = require('multer');
 var upload = multer({ dest: './public/uploads/' });
+//var request = require("request"),
+//  csv = require("csv");
+
 // this is the code the customer gets when visiting /new
 router.get('/new', (req,res) => {
 res.render('products/new', {types: PROTYPES});
@@ -18,7 +21,7 @@ res.render('products/new', {types: PROTYPES});
 router.post('/', ensureLoggedIn('/login'), upload.single('picture'),(req,res,next) =>{
 	const newProduct = new Product ({
 		name: req.body.name,
-		picture: `/uploads/${req.file.filename}`,
+		picture: `${req.file.filename}`,
 		sku: req.body.sku,
 		cat: req.body.cat,
 		price: req.body.price,
@@ -74,7 +77,53 @@ router.post('/:id', upload.single('picture'),  (req, res, next ) => {
 	);
 });
 
+//Bulk upload action - starts
+//get
+// var request = require("request"),
+//     csv = require("csv");
+//
+// module.exports = function(app) {
+//     // accepts the POST form submit of the CSV file
+//     app.post("/uploads/data", function(req, res) {
+//         // the name under "files" must correspond to the name of the
+//         // file input field in the submitted form (here: "csvdata")
+//         csv().from.path(req.files.csvdata.path, {
+//             delimiter: ",",
+//             escape: '"'
+//         })
+//         // when a record is found in the CSV file (a row)
+//         .on("record", function(row, index) {
+//             var firstName, lastName;
+//
+//             // skip the header row
+//             if (index === 0) {
+//                 return;
+//             }
+//
+//             // read in the data from the row
+//             name = row[0].trim();
+//             picture = row[1].trim();
+// 						sku = row[2].trim();
+// 						cat = row[3].trim();
+// 						price = row[4].trim();
+// 						_creator = row[5].trim();
+//             // perform some operation with the data
+//             // ...
+//         })
+//         // when the end of the CSV document is reached
+//         .on("end", function() {
+//             // redirect back to the root
+//             res.redirect("/");
+//         })
+//         // if any errors occur
+//         .on("error", function(error) {
+//             console.log(error.message);
+//         });
+//     });
+// };
 
+
+//end bulk upload action
 
 
 //starts  campaign delete action

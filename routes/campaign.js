@@ -5,6 +5,7 @@ const Product  = require ('../models/product');
 const router   = express.Router();
 const { ensureLoggedIn }  = require('connect-ensure-login');
 const moment = require('moment');
+const mongoose = require('mongoose');
 
 
 //this is the code the customer gets when when visinting /new
@@ -46,18 +47,12 @@ console.log('eetstes', req.body.product);
 //end form post
 
 //gets the campaign + id
-router.get('/:id', (req,res) => {
-  Campaign.findById(req.params.id, (err, campaign) => {
-
-    if (err)       { return next(err) }
-    if (!campaign) { return next(new Error("404")) }
-
-    // Campaign.populate('products', (err, campaign) => {
-    // if (err){ return next(err); }
-
-    return res.render('campaigns/show', { campaign });
+router.get('/:id', (req,res,next) => {
+  Campaign.findById(req.params.id).populate('_creator').populate('products').exec((err, campaign) => {
+    if (err || !campaign){ return next(new Error("404")); }
+    console.log(campaign);
+    res.render('campaigns/show', { campaign });
   });
-//  });
 });
 
 
@@ -88,10 +83,15 @@ router.post('/:id', ensureLoggedIn('/login'), (req, res, next) => {
       description: req.body.description,
       category: req.body.category,
       deadline: req.body.deadline,
-      products: req.body.products
     },
     (err, campaign) => {
     if (err) { return next(err); }
+    console.log("HERE: ", req.body.products);
+    //req.body.products.forEach(function(x){
+      //console.log("CURRENT X = ", x);
+      //campaign.products.push(mongoose.Types.ObjectId(x));
+    //})
+    console.log(campaign);
 
     return res.redirect(`/campaigns/${campaign._id}`);
   }

@@ -54,6 +54,7 @@
                         <div class="form-group">
                           <label for="products">Products</label><br>
                           <select multiple name="products" id="products">
+                            
                             <% products.forEach((currentproduct) => { %>
                             <!-- This selects the campaign's category in the dropdown -->
                               <% if (campaign.products.indexOf(currentproduct._id)) { %>

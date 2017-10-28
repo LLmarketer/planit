@@ -20,6 +20,9 @@
               <span class="light-text">
                 This Campaign has $<%= campaign.goal %></span> goal
               </span>
+              <% campaign.products.forEach((product) => { %>
+              <p class="campaign-products"><%= product.name %></p>
+              <%  }) %>
               <br>
               <br>
               <form action="/campaigns/<%= campaign._id %>/delete" method="POST">
